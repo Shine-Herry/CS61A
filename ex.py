@@ -3,4 +3,4 @@ def make_adder(n):
         return k + n
     return adder 
 
-text
+"""text"""
