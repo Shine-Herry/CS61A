@@ -5,4 +5,4 @@ def twenty_twenty_two():
     >>> twenty_twenty_two()
     2022
     """
-    return 2 * 100 + 2 * 11
+    return 2022
