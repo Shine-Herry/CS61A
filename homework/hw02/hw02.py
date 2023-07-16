@@ -31,7 +31,11 @@ def product(n, term):
     >>> product(3, triple)    # 1*3 * 2*3 * 3*3
     162
     """
-    "*** YOUR CODE HERE ***"
+    i, sum = 1, 1
+    while i <= n:
+        sum *= term(i)
+        i += 1
+    return sum 
 
 
 def accumulate(merger, start, n, term):
@@ -58,7 +62,11 @@ def accumulate(merger, start, n, term):
     >>> accumulate(lambda x, y: (x + y) % 17, 19, 20, square)
     16
     """
-    "*** YOUR CODE HERE ***"
+    i = 1
+    while i <= n:
+        start = merger(start, term(i))
+        i += 1
+    return start
 
 
 def summation_using_accumulate(n, term):
@@ -75,7 +83,7 @@ def summation_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(summation_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    "*** YOUR CODE HERE ***"
+    return accumulate(add, 0, n, term) + term(0)
 
 
 def product_using_accumulate(n, term):
@@ -92,4 +100,4 @@ def product_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(product_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    "*** YOUR CODE HERE ***"
+    return accumulate(mul, 1, n, term)
